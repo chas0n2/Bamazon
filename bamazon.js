@@ -12,7 +12,7 @@ var connection = mysql.createConnection({
 
 connection.connect(function(err) {
     if (err) throw err;
-    console.log("connected as id " + Connection.threadId);
+    console.log("connected as id " + connection.threadId);
     dispProducts(function() {
 
     });
@@ -49,14 +49,13 @@ function custPrompt() {
         {
             name: "Quantity",
             type: "input",
-            message: "How many?",
+            message: "How many would you like to purchase?",
             filter: Number
         },
         {
             type: "confirm",
             name: "select",
-            message: "Is this correct?",
-            default: ""//Allowing customer to confirm their order
+            message: "Is this correct?", //Allowing customer to confirm their order
         },
     ]).then(function(answers) {
         var quantityAsked = answers.Quantity;
