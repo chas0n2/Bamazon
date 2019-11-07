@@ -7,7 +7,7 @@ var connection = mysql.createConnection({
     port: 3306,
     user: "root",
     password: "gt36THSM",
-    database: "bamazonDB"
+    database: "bamazon_DB"
 });
 
 connection.connect(function(err) {
@@ -23,14 +23,14 @@ var dispProducts = function() {
     var query = "SELECT * FROM Products";
     connection.query(query, function(err, res){
         if (err) throw err;
-        var newTable = new table ({
+        var newTable = new table ({ //cli-table
             head: ["Item ID", "Product", "Category", "Price", "Quantity"],
             colWidths: [20,20,20,20,20]
         });
         for(var i = 0; i < res.length; i++){
-        newTable.push(
+        newTable.push( //method to push array
             [res[i].item_id, res[i].product_name, res[i].department_name, res[i].price, res[i].stock_quantity]
-        );                       //method to push array
+        );                       
     }
     console.log(newTable.toString() );
     custPrompt();
@@ -75,7 +75,7 @@ function order(ID, amount){
             console.log("Your total cost for " + amount + " " + res[0].product_name + " is " + total + ", Thank you!");
             connection.query("UPDATE Products SET stock_quantity = stock_quantity - " + amount + "WHERE item_id = " + ID);
         } else {
-            console.log("Insufficent amount, we do not have enough " + res[0].product_name + "to complete order.");
+            console.log("Insufficient quantity! We do not have enough " + res[0].product_name + "to complete order.");
         };
         dispProducts();
 
