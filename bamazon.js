@@ -25,7 +25,7 @@ var dispProducts = function() {
         if (err) throw err;
         var newTable = new table ({ //cli-table
             head: ["Item ID", "Product", "Category", "Price", "Quantity"],
-            colWidths: [20,20,20,20,20]
+            colWidths: [20,35,20,20,20]
         });
         for(var i = 0; i < res.length; i++){
         newTable.push( //method to push array
