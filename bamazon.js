@@ -83,4 +83,7 @@ function order(ID, qty){
     });
 };
 
-
+// Want to add a checkout cart that shows the user what they've currently added and what is left in stock.
+// going to create a function that allows the user after looking at the cart if they are sure this is what they want.
+// create a function that shows total cost of all products in cart.
+// Allow user to exit server.
